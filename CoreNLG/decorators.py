@@ -5,12 +5,14 @@ created on 18/12/2018 11:35
 """
 import copy
 import functools
+import itertools
 import re
 
 from lxml import html
 
 from CoreNLG import Errors
 from CoreNLG.NoInterpret import interpretable_char_reverse
+
 
 
 def handle_capitalize(splitters, *args):
@@ -20,10 +22,10 @@ def handle_capitalize(splitters, *args):
         new_string = a
         matchs = list()
         if i == 0:
-            match = re.search("".join([r"^", "( |\n|<[^>]*>)*[a-z]"]), new_string)
+            match = re.search("".join([r"^", "( |\n|<[^>]*>)*\w"]), new_string)
             if match is not None:
                 matchs.append(match)
-        matchs += re.finditer("".join(["(\\" + "|\\".join(splitters), ")( |\n|<[^>]*>)*[a-z]"]), new_string)
+        matchs += re.finditer("".join(["(\\" + "|\\".join(splitters), ")( |\n|<[^>]*>)*\w"]), new_string)
         for match in matchs:
             new_string = new_string[:match.span()[1] - 1] + new_string[match.span()[1] - 1].upper() + new_string[match.span()[1]:]
         capitalized_text.append(new_string)
@@ -60,6 +62,16 @@ def new_contraction(text, contracts):
 
 
 def handle_dots(text):
+
+    # remove lonely period, possibly through html tags
+    matchs = re.finditer(r"(((<(/|)(p|div|br|ul|li)>)|\s)+\.)", text)
+    nb_removed = 0
+    for match in matchs:
+        cleaned_dots = match.group()
+        cleaned_dots = re.sub("\\.", "", cleaned_dots)
+        text = "".join([text[:match.span()[0] - nb_removed], cleaned_dots, text[match.span()[1] - nb_removed:]])
+        nb_removed += len(match.group()) - len(cleaned_dots)
+
     matchs = re.finditer(r"(\.((<[^>]*>)|\W)*){2,}", text)
     nb_removed = 0
     for match in matchs:
@@ -67,13 +79,15 @@ def handle_dots(text):
         cleaned_dots = match.group()
         cleaned_dots = re.sub(" \\.", ".", cleaned_dots)
         if nb_dots == 2:
-            cleaned_dots = re.sub("\\.", "", cleaned_dots, count=1)
+            cleaned_dots = re.sub("\\.", lambda m, c=itertools.count(): m.group() if next(c) == 0 else '', cleaned_dots)
+            # re.sub('(world)', lambda m, c=itertools.count(): m.group() if next(c) % 5 else 'earth', s)
             text = "".join([text[:match.span()[0] - nb_removed], cleaned_dots, text[match.span()[1] - nb_removed:]])
         elif nb_dots >= 3:
             if nb_dots > 3:
                 cleaned_dots = re.sub("\\.", "", cleaned_dots, count=nb_dots - 3)
             text = "".join([text[:match.span()[0] - nb_removed], cleaned_dots, text[match.span()[1] - nb_removed:]])
         nb_removed += len(match.group()) - len(cleaned_dots)
+
     return text
 
 
@@ -157,6 +171,8 @@ def handle_special_spaces(text, ponct):
         text = remove_spaces_before(text, char)
         text = remove_spaces_after(text, char)
 
+    text = text.replace(" ; ", ";")
+
     text = text.replace("<remove>", "")
     return text
 
@@ -166,12 +182,12 @@ def handle_redondant_spaces(text):
     for match in re.finditer("".join([" +"]), text):
         text, nb_removed = remove_match_spaces(text, match, nb_removed, True)
 
-    text = re.sub("".join([r" ", balise_regex(), "*$"]), "", text)
+    #text = re.sub("".join([r" ", balise_regex(), "*$"]), "", text)
     return text
 
 
 def balise_regex():
-    return "(<[^>]*>( *\n*)*)"
+    return "(<[^>]*>(\s)*)"
 
 
 def beautifier(f_ret, ponct, contract):

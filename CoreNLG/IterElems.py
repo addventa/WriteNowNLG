@@ -100,10 +100,9 @@ class IterElems:
             else:
                 elem += str(self.end_of_bullet)
 
-            if "<" in elem and ">" in elem:
-                elem = html.fromstring(elem)
+            elem = html.fromstring('<li>'+elem+'</li>')
 
-            ul.append(builder.LI(elem))
+            ul.append(elem)
             i += 1
 
         return html.tostring(ul, encoding="utf-8").decode("utf-8")
