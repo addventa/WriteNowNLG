@@ -7,6 +7,7 @@ from CoreNLG.AddTag import AddTag
 from CoreNLG.tools import take_second_arg_if_first_none
 
 interpretable_char = {
+    "...": "ELLIPSIS_DOTS",
     ".": "DOT",
     ",": "COMMA",
     '"': "QUOTE",

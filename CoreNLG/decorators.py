@@ -48,7 +48,11 @@ def new_contraction(text, contracts):
                 replacer = list()
                 for g in match.groups():
                     replacer.append(g if g is not None else "")
+                
+                is_capitalize = replacer[2][0].isupper()
                 replacer[2] = replace[0]
+                if is_capitalize:
+                    replacer[2] = replacer[2][:1].upper() + replacer[2][1:]
                 replacer[-1] = replace[1].capitalize() if replacer[-1][0].isupper() else replace[1]
                 replacer.pop(0)
                 candidats.append((match.group(), replacer))
@@ -78,16 +82,12 @@ def handle_dots(text):
         nb_dots = len(re.findall(r"\.", match.group()))
         cleaned_dots = match.group()
         cleaned_dots = re.sub(" \\.", ".", cleaned_dots)
-        if nb_dots == 2:
+        if nb_dots > 1:
             cleaned_dots = re.sub("\\.", lambda m, c=itertools.count(): m.group() if next(c) == 0 else '', cleaned_dots)
             # re.sub('(world)', lambda m, c=itertools.count(): m.group() if next(c) % 5 else 'earth', s)
             text = "".join([text[:match.span()[0] - nb_removed], cleaned_dots, text[match.span()[1] - nb_removed:]])
-        elif nb_dots >= 3:
-            if nb_dots > 3:
-                cleaned_dots = re.sub("\\.", "", cleaned_dots, count=nb_dots - 3)
-            text = "".join([text[:match.span()[0] - nb_removed], cleaned_dots, text[match.span()[1] - nb_removed:]])
         nb_removed += len(match.group()) - len(cleaned_dots)
-
+        
     return text
 
 
