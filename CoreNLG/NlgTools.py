@@ -42,6 +42,7 @@ class NlgTools:
             no_interpret=self.no_interpret,
             sep=read_default_words(self._default_words, "numbers", "sep", default="."),
             thousand_sep=read_default_words(self._default_words, "numbers", "thousand_sep", default=" "),
+            num_to_text=self._num_to_text
         ).nlg_num
 
         self.enum = IterElems(
@@ -64,6 +65,7 @@ class NlgTools:
         self._ponct = read_json_resource(os.path.join(resource_path, "ponctuation.json"), self._lang)
         self._default_words = read_json_resource(os.path.join(resource_path, "default_words.json"), self._lang)
         self._contract = self.__expand_contractions(get_resource_lang(contraction, self._lang))
+        self._num_to_text = read_json_resource(os.path.join(resource_path, "num_to_text.json"), self._lang)
 
     def __expand_contractions(self, contracts):
         contract_expended = list()

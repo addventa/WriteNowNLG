@@ -10,7 +10,7 @@ from CoreNLG.tools import take_second_arg_if_first_none, temporary_override_args
 
 class Number:
     def __init__(self, short="", sep=".", mile_sep=" ", thousand_sep=" ", dec: int=None,
-                 force_sign=False, remove_trailing_zeros=True, no_interpret=None):
+                 force_sign=False, remove_trailing_zeros=True, no_interpret=None, num_to_text=None):
 
         self.short = short
         self.sep = sep
@@ -20,11 +20,13 @@ class Number:
         self.force_sign = force_sign
         self.remove_trailing_zeros = remove_trailing_zeros
         self.__no_interpret = take_second_arg_if_first_none(no_interpret, NoInterpret().no_interpret)
+        self.num_to_text = num_to_text if num_to_text is not None else dict()
 
     @temporary_override_args
-    def nlg_num(self, num, short=None, sep=None, mile_sep=None, thousand_sep=None, dec: int=None, force_sign=None, remove_trailing_zeros=None):
+    def nlg_num(self, num, short=None, sep=None, mile_sep=None, thousand_sep=None, dec: int=None, force_sign=None, remove_trailing_zeros=None, num_to_text=False):
         _sign = ""
-
+        if num_to_text:
+            return num_to_text.get(str(num), num)
         if self.force_sign and num > 0:
             _sign = "+"
         if self.dec is None:
@@ -52,5 +54,5 @@ class Number:
         )
 
 
-def nlg_num(num, short=None, sep=None, mile_sep=None, thousand_sep=None, dec: int=None, force_sign=None, remove_trailing_zeros=None):
+def nlg_num(num, short=None, sep=None, mile_sep=None, thousand_sep=None, dec: int=None, force_sign=None, remove_trailing_zeros=None, num_to_text=None):
     return Number().nlg_num(num, **{k: v for k, v in locals().items() if k != "num"})

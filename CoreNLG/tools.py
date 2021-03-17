@@ -83,6 +83,7 @@ def read_json_resource(path, lang):
 
 def get_resource_lang(resource, lang):
     try:
+        test = resource[lang]
         return resource[lang]
     except KeyError:
         raise Exception("lang \"{}\" doesn't exist in ponctuation resource".format(lang))
