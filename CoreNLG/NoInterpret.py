@@ -25,6 +25,7 @@ interpretable_char = {
     "[": "OPENING_BRACKET",
     "]": "CLOSING_BRACKET",
     "\n": "CARRIAGE_RETURN",
+    "": "NOCONTRACT"
 }
 
 interpretable_char_reverse = {value: key for key, value in interpretable_char.items()}
@@ -44,8 +45,11 @@ class NoInterpret:
         except KeyError:
             return char
 
-    def no_interpret(self, text):
-        not_interpret_text = "".join([self.__no_interpret_char(c) for c in text])
+    def no_interpret(self, text, no_contract=True):
+        not_interpret_text = ""
+        if no_contract:
+            not_interpret_text = "#NOCONTRACT#"
+        not_interpret_text += "".join([self.__no_interpret_char(c) for c in text])
         if '  ' in text:
             return self.__add_tag("span", not_interpret_text, style="white-space:pre")
         else:
