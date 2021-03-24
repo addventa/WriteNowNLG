@@ -42,7 +42,7 @@ def new_contraction(text, contracts):
                 search_1 = len(re.findall("".join([search[0], "\\W"]), text))
                 if search_1 == 0:
                     break
-            for match in re.finditer("".join(["((\\W|^))(", search[0], ") +(", search[1], ")"]), text):
+            for match in re.finditer("".join(["((\\W|^))(", search[0], ")(\s)+(", search[1], ")"]), text):
                 replacer = list()
                 for g in match.groups():
                     replacer.append(g if g is not None else "")
