@@ -6,12 +6,17 @@ created on 02/12/2019 16:08
 
 
 class AddTag:
-    def add_tag(self, tag, text="", _class=None, **kwargs):
+    def add_tag(self, tag, text="", _class=None, attributes=[], **kwargs):
         if tag is None:
             return text
         tag = tag.lower()
         _class = "".join([" class=\"", _class, "\""]) if _class is not None else ""
+      
         attribs = ""
+
+        for k, v in dict(zip(attributes[::2], attributes[1::2])).items():
+            attribs += " {}=\"{}\"".format(k, v)
+
         for k, v in kwargs.items():
             attribs += " {}=\"{}\"".format(k, v)
 
@@ -24,5 +29,5 @@ class AddTag:
             return list(iter_return)
 
 
-def add_tag(tag, text="", _class=None, **kwargs):
-    return AddTag().add_tag(tag, text, _class, **kwargs)
+def add_tag(tag, text="", _class=None, attributes=[], **kwargs):
+    return AddTag().add_tag(tag, text, _class, attributes=attributes, **kwargs)
