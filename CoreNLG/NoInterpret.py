@@ -56,5 +56,5 @@ class NoInterpret:
             return not_interpret_text
 
 
-def no_interpret(text):
-    return NoInterpret().no_interpret(text)
+def no_interpret(text, no_contract=True):
+    return NoInterpret().no_interpret(text, no_contract=no_contract)
