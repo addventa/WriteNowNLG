@@ -33,8 +33,9 @@ class Number:
             _format = "{}{:,}{}"
         else:
             false_dec = 0
-            if self.remove_trailing_zeros:
-                num = round(num, self.dec)
+            if self.remove_trailing_zeros: 
+               # trunc ?
+               #num = round(num, self.dec)
                 false_dec = self.dec
                 false_num = num
                 while false_dec > 0:
