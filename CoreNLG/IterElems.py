@@ -74,24 +74,24 @@ class IterElems:
     def __iter_elems(self, iter_elem):
         elem = list()
         if len(iter_elem) == 1:
-            return " ".join(iter_elem[0])
+            return " ".join([str(text) for text in iter_elem[0]])
         for i in range(len(iter_elem)):
             if i == len(iter_elem) - 2:
                 elem += iter_elem[i]
-                elem.append(str(self.last_sep))
+                elem.append(self.last_sep)
                 elem += iter_elem[i + 1]
                 break
             else:
                 elem += iter_elem[i]
-                elem.append(str(self.sep))
-        return " ".join(elem)
+                elem.append(self.sep)
+        return " ".join([str(text) for text in elem])
 
     def __bullets_points(self, iter_elem):
         ul = builder.UL()
 
         i = 0
         for elem in iter_elem:
-            elem = " ".join(elem)
+            elem = " ".join([str(text) for text in elem])
             if self.capitalize_bullets:
                 elem = "".join([elem[0].upper(), elem[1:]])
 
