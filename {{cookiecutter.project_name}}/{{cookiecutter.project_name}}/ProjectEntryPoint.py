@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 import json
+import os
+import sys
+
 from CoreNLG.DocumentConstructors import Document
+
+dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+sys.path.append(dir_path)
 
 from {{cookiecutter.project_name}}.Datas.MyDatas import MyDatas
 from {{cookiecutter.project_name}}.TextClass.Intro import Intro
