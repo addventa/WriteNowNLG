@@ -14,6 +14,13 @@ from CoreNLG import Errors
 from CoreNLG.NoInterpret import interpretable_char_reverse
 
 
+def handle_text_gluing(text):
+
+    # remove gluing placeholder
+    text = re.sub(r'(\s)*__GLUE__(\s)*', '', text)
+
+    return text
+
 
 def handle_capitalize(splitters, *args):
 
@@ -189,6 +196,7 @@ def balise_regex():
 
 
 def beautifier(f_ret, ponct, contract):
+    f_ret = handle_text_gluing(f_ret)
     f_ret = new_contraction(f_ret, contract)
     f_ret = " ".join(handle_capitalize(copy.copy(ponct["capitalize"]), f_ret))
     f_ret = handle_special_spaces(f_ret, ponct)
