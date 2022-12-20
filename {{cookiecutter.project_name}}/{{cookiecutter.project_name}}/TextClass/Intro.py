@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from CoreNLG.DocumentConstructors import TextClass
+from CoreNLGMod.DocumentConstructors import TextClass
 
 
 class Intro(TextClass):

@@ -5,13 +5,13 @@ created on 20/12/2018 16:37
 """
 
 from setuptools import setup, find_packages
-import CoreNLG
+import CoreNLGMod
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="CoreNLG",
+    name="CoreNLGMod",
     version="2.1.1",
     description="",
     long_description=long_description,
@@ -21,7 +21,7 @@ setup(
     license="Apache v2",
     packages=find_packages(exclude=["*.logs"]),
     include_package_data=True,
-    cmdclass={"package": CoreNLG},
+    cmdclass={"package": CoreNLGMod},
     zip_safe=False,
     install_requires=["lxml"],
 )

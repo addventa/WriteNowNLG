@@ -4,10 +4,10 @@ created on 25/07/2019 14:57
 @author: fgiely
 """
 import pytest
-from CoreNLG.DocumentConstructors import Datas, Document
-from CoreNLG.NlgTools import NlgTools
+from CoreNLGMod.DocumentConstructors import Datas, Document
+from CoreNLGMod.NlgTools import NlgTools
 
-from CoreNLG.tests.fixtures import post_treatment_with_synonyms_fr
+from CoreNLGMod.tests.fixtures import post_treatment_with_synonyms_fr
 
 
 class TestSynonyms:

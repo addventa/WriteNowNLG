@@ -3,7 +3,7 @@
 created on 09/12/2019 16:15
 @author: fgiely
 """
-from CoreNLG.PredefObjects import TextVar
+from CoreNLGMod.PredefObjects import TextVar
 
 
 class FreeText:

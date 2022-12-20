@@ -6,8 +6,8 @@ created on 25/07/2019 10:58
 
 import pytest
 
-from CoreNLG.DocumentConstructors import Datas, Document, TextClass
-from CoreNLG.tests.fixtures import create_empty_doc, create_empty_section, MyDatas
+from CoreNLGMod.DocumentConstructors import Datas, Document, TextClass
+from CoreNLGMod.tests.fixtures import create_empty_doc, create_empty_section, MyDatas
 
 
 class TestDocument:

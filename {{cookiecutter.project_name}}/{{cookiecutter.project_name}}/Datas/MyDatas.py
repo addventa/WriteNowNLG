@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from CoreNLG.DocumentConstructors import Datas
+from CoreNLGMod.DocumentConstructors import Datas
 
 
 class MyDatas(Datas):

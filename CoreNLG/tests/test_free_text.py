@@ -3,7 +3,7 @@
 created on 24/07/2019 11:35
 @author: fgiely
 """
-from CoreNLG.NlgTools import NlgTools
+from CoreNLGMod.NlgTools import NlgTools
 
 
 class TestFreeText:

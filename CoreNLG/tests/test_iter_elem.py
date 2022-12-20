@@ -5,8 +5,8 @@ created on 24/07/2019 14:07
 """
 import pytest
 
-from CoreNLG.NlgTools import NlgTools
-from CoreNLG.tests.fixtures import list_elem, long_list_elem, long_list_with_empty_elem, iter_elem_with_post_treatment_fr
+from CoreNLGMod.NlgTools import NlgTools
+from CoreNLGMod.tests.fixtures import list_elem, long_list_elem, long_list_with_empty_elem, iter_elem_with_post_treatment_fr
 
 
 class TestIterElem:

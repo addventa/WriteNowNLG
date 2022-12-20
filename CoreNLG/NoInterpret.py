@@ -3,8 +3,8 @@
 created on 02/12/2019 16:07
 @author: fgiely
 """
-from CoreNLG.AddTag import AddTag
-from CoreNLG.tools import take_second_arg_if_first_none
+from CoreNLGMod.AddTag import AddTag
+from CoreNLGMod.tools import take_second_arg_if_first_none
 
 interpretable_char = {
     "...": "ELLIPSIS_DOTS",

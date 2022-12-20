@@ -6,7 +6,7 @@ created on 24/07/2019 14:01
 
 import pytest
 
-from CoreNLG.DocumentConstructors import Document, Datas
+from CoreNLGMod.DocumentConstructors import Document, Datas
 
 
 class MyDatas(Datas):

@@ -1,7 +1,7 @@
 import lxml
 
-from CoreNLG.PredefObjects import TextVar
-from CoreNLG.NlgTools import NlgTools
+from CoreNLGMod.PredefObjects import TextVar
+from CoreNLGMod.NlgTools import NlgTools
 
 lang = 'fr' # change language to en / fr
 nlg = NlgTools(lang=lang)

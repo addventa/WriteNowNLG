@@ -15,5 +15,5 @@ setup(
     include_package_data=True,
     cmdclass={"package": {{cookiecutter.project_name}}},
     zip_safe=False,
-    install_requires=["CoreNLG",],
+    install_requires=["CoreNLGMod",],
 )

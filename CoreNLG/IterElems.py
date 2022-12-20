@@ -8,7 +8,7 @@ import sys
 from lxml import html
 from lxml.html import builder
 
-from CoreNLG.tools import handle_string_to_html, temporary_override_args
+from CoreNLGMod.tools import handle_string_to_html, temporary_override_args
 
 
 class IterElems:

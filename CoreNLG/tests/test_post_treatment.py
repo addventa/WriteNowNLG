@@ -5,7 +5,7 @@ created on 24/07/2019 14:19
 """
 import pytest
 
-from CoreNLG.tests.fixtures import post_treatment_with_free_text_fr
+from CoreNLGMod.tests.fixtures import post_treatment_with_free_text_fr
 
 
 class TestPostTreatment:

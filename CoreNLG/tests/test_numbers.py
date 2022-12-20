@@ -5,8 +5,8 @@ created on 25/07/2019 15:42
 """
 import pytest
 
-from CoreNLG.NlgTools import NlgTools
-from CoreNLG.tests.fixtures import post_treatment_with_numbers_fr
+from CoreNLGMod.NlgTools import NlgTools
+from CoreNLGMod.tests.fixtures import post_treatment_with_numbers_fr
 
 
 class TestNumbers:

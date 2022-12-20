@@ -4,8 +4,8 @@ created on 02/12/2019 16:00
 @author: fgiely
 """
 
-from CoreNLG.NoInterpret import NoInterpret
-from CoreNLG.tools import take_second_arg_if_first_none, temporary_override_args
+from CoreNLGMod.NoInterpret import NoInterpret
+from CoreNLGMod.tools import take_second_arg_if_first_none, temporary_override_args
 
 
 class Number:

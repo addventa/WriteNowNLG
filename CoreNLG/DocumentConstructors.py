@@ -9,14 +9,14 @@ from lxml.html import builder
 from lxml import etree
 from abc import ABCMeta, abstractmethod
 
-from CoreNLG.NlgTools import NlgTools
+from CoreNLGMod.NlgTools import NlgTools
 
 
 class Datas:
 
     def __init__(self, json_in: dict):
         """
-        Can be overridden (cf. Readme.md on CoreNLG GitHub) to handle big file.
+        Can be overridden (cf. Readme.md on CoreNLGMod GitHub) to handle big file.
 
         :param json_in: file which contains the main data (which will be the source of the text generation)
         :type json_in: dictionary (possibly returned from json.load(open(".json")) )

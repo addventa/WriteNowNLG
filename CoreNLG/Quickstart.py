@@ -4,7 +4,7 @@ created on 21/02/2019 17:15
 @author: fgiely
 """
 
-from CoreNLG.DocumentConstructors import Datas, Document, TextClass
+from CoreNLGMod.DocumentConstructors import Datas, Document, TextClass
 
 
 project_input = {"infos": {"project_name": "quickstart"}}
@@ -15,8 +15,8 @@ class MyDatas(Datas):
     """Class to store data with the additional information of the project name"""
 
     """
-    A class witch inherits CoreNLG.Datas to store short acces to some datas.
-    All attributes of this class are accessible to all class inheriting CoreNLG.TextClass
+    A class witch inherits CoreNLGMod.Datas to store short acces to some datas.
+    All attributes of this class are accessible to all class inheriting CoreNLGMod.TextClass
     """
 
     def __init__(self, json_in: dict):

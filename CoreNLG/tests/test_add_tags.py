@@ -5,7 +5,7 @@ created on 24/07/2019 17:09
 """
 import pytest
 
-from CoreNLG.NlgTools import NlgTools
+from CoreNLGMod.NlgTools import NlgTools
 
 
 class TestAddTags:

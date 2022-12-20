@@ -10,8 +10,8 @@ import re
 
 from lxml import html
 
-from CoreNLG import Errors
-from CoreNLG.NoInterpret import interpretable_char_reverse
+from CoreNLGMod import Errors
+from CoreNLGMod.NoInterpret import interpretable_char_reverse
 
 
 def handle_text_gluing(text):

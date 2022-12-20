@@ -8,18 +8,18 @@ import os
 from lxml import html
 from lxml import etree
 
-from CoreNLG.FreeText import FreeText
-from CoreNLG.Intensity import Intensity
-from CoreNLG.IterElems import IterElems
-from CoreNLG.KeyVals import KeyVals
-from CoreNLG.Synonym import Synonym
-from CoreNLG.decorators import beautifier
-from CoreNLG.resources.contraction import contraction
+from CoreNLGMod.FreeText import FreeText
+from CoreNLGMod.Intensity import Intensity
+from CoreNLGMod.IterElems import IterElems
+from CoreNLGMod.KeyVals import KeyVals
+from CoreNLGMod.Synonym import Synonym
+from CoreNLGMod.decorators import beautifier
+from CoreNLGMod.resources.contraction import contraction
 
-from CoreNLG.AddTag import AddTag
-from CoreNLG.NoInterpret import NoInterpret
-from CoreNLG.Number import Number
-from CoreNLG.tools import read_json_resource, get_resource_lang, read_default_words
+from CoreNLGMod.AddTag import AddTag
+from CoreNLGMod.NoInterpret import NoInterpret
+from CoreNLGMod.Number import Number
+from CoreNLGMod.tools import read_json_resource, get_resource_lang, read_default_words
 
 
 class NlgTools:
